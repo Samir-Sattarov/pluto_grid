@@ -553,7 +553,7 @@ mixin ColumnState implements IPlutoGridState {
       updated = _updateResizeColumns(column: column, offset: offset);
     }
 
-    onChangeColumnSize(columnIndex(column)!,offset);
+    onChangeColumnSize(columnIndex(column)!,column.width - column.minWidth);
 
     if (updated == false) {
       return;
