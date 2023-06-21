@@ -543,15 +543,15 @@ mixin ColumnState implements IPlutoGridState {
 
     bool updated = false;
 
-    if (columnsResizeMode.isNormal) {
+    // if (columnsResizeMode.isNormal) {
       final setWidth = column.width + offset;
 
       column.width = setWidth > column.minWidth ? setWidth : column.minWidth;
 
       updated = setWidth == column.width;
-    } else {
-      updated = _updateResizeColumns(column: column, offset: offset);
-    }
+    // } else {
+    //   updated = _updateResizeColumns(column: column, offset: offset);
+    // }
 
     onChangeColumnSize(columnIndex(column)!,column.width - column.minWidth);
 
