@@ -64,7 +64,7 @@ class PlutoGridStateChangeNotifier extends PlutoChangeNotifier
         ScrollState,
         SelectingState,
         VisibilityLayoutState {
-  PlutoGridStateChangeNotifier({
+  PlutoGridStateChangeNotifier( {
     required List<PlutoColumn> columns,
     required List<PlutoRow> rows,
     required this.gridFocusNode,
@@ -76,6 +76,7 @@ class PlutoGridStateChangeNotifier extends PlutoChangeNotifier
     this.onRowChecked,
     this.onRowDoubleTap,
     this.onRowSecondaryTap,
+    this.onSizeChanged,
     this.onRowsMoved,
     this.onColumnsMoved,
     this.rowColorCallback,
@@ -154,6 +155,9 @@ class PlutoGridStateChangeNotifier extends PlutoChangeNotifier
   final PlutoChangeNotifierFilterResolver notifierFilterResolver;
 
   @override
+  final Function(int,double)? onSizeChanged;
+
+  @override
   final GlobalKey gridKey;
 
   void _initialize() {
@@ -172,6 +176,11 @@ class PlutoGridStateChangeNotifier extends PlutoChangeNotifier
     );
 
     setGroupToColumn();
+  }
+
+  @override
+  void onChangeColumnSize(int index,double size) {
+    onSizeChanged?.call(index, size);
   }
 }
 
@@ -219,6 +228,7 @@ class PlutoGridStateManager extends PlutoGridStateChangeNotifier {
     super.onSorted,
     super.onRowChecked,
     super.onRowDoubleTap,
+    super.onSizeChanged,
     super.onRowSecondaryTap,
     super.onRowsMoved,
     super.onColumnsMoved,
@@ -377,6 +387,11 @@ class PlutoGridStateManager extends PlutoGridStateChangeNotifier {
     });
 
     return completer.future;
+  }
+
+  @override
+  void onChangeColumnSize(int index,double size) {
+    onSizeChanged?.call(index,size);
   }
 }
 

@@ -151,6 +151,10 @@ class _PlutoGridExamplePageState extends State<PlutoGridExamplePage> {
           columns: columns,
           rows: rows,
           columnGroups: columnGroups,
+          onSizeChanged: (index,size) {
+            print("Index $index, Size $size");
+
+          },
           onLoaded: (PlutoGridOnLoadedEvent event) {
             stateManager = event.stateManager;
             stateManager.setShowColumnFilter(true);

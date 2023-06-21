@@ -64,7 +64,7 @@ class PlutoSelectCellState extends State<PlutoSelectCell>
 
     popupColumns = [
       PlutoColumn(
-        title: widget.column.title,
+        title: "asdfasdfasdfasdf",
         field: widget.column.title,
         readOnly: true,
         type: PlutoColumnType.text(),

@@ -70,6 +70,7 @@ class PlutoGrid extends PlutoStatefulWidget {
     this.onColumnsMoved,
     this.createHeader,
     this.createFooter,
+    this.onSizeChanged,
     this.noRowsWidget,
     this.rowColorCallback,
     this.columnMenuDelegate,
@@ -126,6 +127,7 @@ class PlutoGrid extends PlutoStatefulWidget {
   /// [columnGroups] can be expressed in UI by grouping columns.
   /// {@endtemplate}
   final List<PlutoColumnGroup>? columnGroups;
+  final Function(int,double)? onSizeChanged;
 
   /// {@template pluto_grid_property_onLoaded}
   /// [PlutoGrid] completes setting and passes [PlutoGridStateManager] to [event].
@@ -436,6 +438,7 @@ class PlutoGridState extends PlutoStateWithChange<PlutoGrid> {
     stateManager
       ..setConfiguration(widget.configuration)
       ..setGridMode(widget.mode);
+
   }
 
   @override
@@ -501,6 +504,7 @@ class PlutoGridState extends PlutoStateWithChange<PlutoGrid> {
       columns: widget.columns,
       rows: widget.rows,
       gridFocusNode: _gridFocusNode,
+      onSizeChanged: widget.onSizeChanged,
       scroll: PlutoGridScrollController(
         vertical: _verticalScroll,
         horizontal: _horizontalScroll,

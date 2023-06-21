@@ -108,6 +108,8 @@ abstract class IColumnState {
 
   void autoFitColumn(BuildContext context, PlutoColumn column);
 
+  void onChangeColumnSize(int index, double size);
+
   /// Hide or show the [column] with [hide] value.
   ///
   /// When [column.frozen.isFrozen] and [hide] is false,
@@ -550,6 +552,8 @@ mixin ColumnState implements IPlutoGridState {
     } else {
       updated = _updateResizeColumns(column: column, offset: offset);
     }
+
+    onChangeColumnSize(columnIndex(column)!,column.width);
 
     if (updated == false) {
       return;
