@@ -105,6 +105,7 @@ abstract class IColumnState {
   /// In case of [column.frozen.isFrozen],
   /// it is not changed if the width constraint of the frozen column is narrow.
   void resizeColumn(PlutoColumn column, double offset);
+  void setColumnMinSize(PlutoColumn column, double size);
 
   void autoFitColumn(BuildContext context, PlutoColumn column);
 
@@ -547,7 +548,7 @@ mixin ColumnState implements IPlutoGridState {
       final setWidth = column.width + offset;
 
       column.width = setWidth > column.minWidth ? setWidth : column.minWidth;
-
+      //
       updated = setWidth == column.width;
     } else {
       updated = _updateResizeColumns(column: column, offset: offset);
@@ -568,6 +569,14 @@ mixin ColumnState implements IPlutoGridState {
       correctHorizontalOffset,
     );
 
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      activateColumnsAutoSize();
+    });
+  }
+
+  @override
+  void setColumnMinSize(PlutoColumn column, double size) {
+    column.minWidth = size;
   }
 
   @override

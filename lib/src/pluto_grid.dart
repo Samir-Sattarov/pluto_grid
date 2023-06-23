@@ -129,6 +129,8 @@ class PlutoGrid extends PlutoStatefulWidget {
   final List<PlutoColumnGroup>? columnGroups;
   final Function(int,double)? onSizeChanged;
 
+  // final Function(PlutoColumn ,double ) setColumnMinWidth;
+
   /// {@template pluto_grid_property_onLoaded}
   /// [PlutoGrid] completes setting and passes [PlutoGridStateManager] to [event].
   ///

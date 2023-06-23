@@ -14,6 +14,7 @@ abstract class IPaginationRowState {
   bool get isPaginated;
 
   void setPageSize(int pageSize, {bool notify = true});
+  void setColumnMinSize(PlutoColumn column , double size);
 
   void setPage(
     int page, {
@@ -138,6 +139,18 @@ mixin PaginationRowState implements IPlutoGridState {
     }
 
     notifyListeners(notify, setPage.hashCode);
+  }
+
+
+  @override
+  void setColumnMinSize(
+    PlutoColumn column, double size,) {
+
+    column.width = size;
+    column.minWidth = size;
+
+
+    print("Column field ${column.field}, title ${column.title}, minW ${column.minWidth} w ${column.width}");
   }
 
   @override

@@ -64,7 +64,7 @@ class PlutoGridStateChangeNotifier extends PlutoChangeNotifier
         ScrollState,
         SelectingState,
         VisibilityLayoutState {
-  PlutoGridStateChangeNotifier( {
+  PlutoGridStateChangeNotifier(   {
     required List<PlutoColumn> columns,
     required List<PlutoRow> rows,
     required this.gridFocusNode,
@@ -76,6 +76,7 @@ class PlutoGridStateChangeNotifier extends PlutoChangeNotifier
     this.onRowChecked,
     this.onRowDoubleTap,
     this.onRowSecondaryTap,
+ // required   this.setColumnMinimumSize,
     this.onSizeChanged,
     this.onRowsMoved,
     this.onColumnsMoved,
@@ -156,6 +157,8 @@ class PlutoGridStateChangeNotifier extends PlutoChangeNotifier
 
   @override
   final Function(int,double)? onSizeChanged;
+
+  // final Function(PlutoColumn,double ) setColumnMinimumSize;
 
   @override
   final GlobalKey gridKey;
@@ -393,6 +396,8 @@ class PlutoGridStateManager extends PlutoGridStateChangeNotifier {
   void onChangeColumnSize(int index,double size) {
     onSizeChanged?.call(index,size);
   }
+
+
 }
 
 /// This is a class for handling horizontal and vertical scrolling of columns and rows of [PlutoGrid].

@@ -129,14 +129,6 @@ class _PlutoGridExamplePageState extends State<PlutoGridExamplePage> {
   ];
 
   /// columnGroups that can group columns can be omitted.
-  final List<PlutoColumnGroup> columnGroups = [
-    PlutoColumnGroup(title: 'Id', fields: ['id'], expandedColumn: true),
-    PlutoColumnGroup(title: 'User information', fields: ['name', 'age']),
-    PlutoColumnGroup(title: 'Status', children: [
-      PlutoColumnGroup(title: 'A', fields: ['role'], expandedColumn: true),
-      PlutoColumnGroup(title: 'Etc.', fields: ['joined', 'working_time']),
-    ]),
-  ];
 
   /// [PlutoGridStateManager] has many methods and properties to dynamically manipulate the grid.
   /// You can manipulate the grid dynamically at runtime by passing this through the [onLoaded] callback.
@@ -150,7 +142,8 @@ class _PlutoGridExamplePageState extends State<PlutoGridExamplePage> {
         child: PlutoGrid(
           columns: columns,
           rows: rows,
-          columnGroups: columnGroups,
+
+
           onSizeChanged: (index,size) {
             print("Index $index, Size $size");
 
@@ -158,6 +151,16 @@ class _PlutoGridExamplePageState extends State<PlutoGridExamplePage> {
           onLoaded: (PlutoGridOnLoadedEvent event) {
             stateManager = event.stateManager;
             stateManager.setShowColumnFilter(true);
+
+            // stateManager.setPage(page);
+
+            stateManager.setColumnMinSize(columns.first, 400)
+;
+
+            stateManager.setPage(10);
+            // stateManager.setColumnMinimumSize!(columns.first, 20);
+
+
           },
           onChanged: (PlutoGridOnChangedEvent event) {
             print(event);
@@ -166,5 +169,11 @@ class _PlutoGridExamplePageState extends State<PlutoGridExamplePage> {
         ),
       ),
     );
+  }
+
+  _setMinWidth() {
+
+
+
   }
 }
