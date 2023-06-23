@@ -537,8 +537,27 @@ mixin ColumnState implements IPlutoGridState {
       return;
     }
 
+    if (limitResizeColumn(column, offset)) {
+      return;
+    }
+
+    bool updated = false;
+
+    if (columnsResizeMode.isNormal) {
+      final setWidth = column.width + offset;
+
+      column.width = setWidth > column.minWidth ? setWidth : column.minWidth;
+
+      updated = setWidth == column.width;
+    } else {
+      updated = _updateResizeColumns(column: column, offset: offset);
+    }
 
     onChangeColumnSize(columnIndex(column)!,column.width - column.minWidth);
+
+    if (updated == false) {
+      return;
+    }
 
     deactivateColumnsAutoSize();
 
