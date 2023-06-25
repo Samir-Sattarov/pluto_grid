@@ -29,6 +29,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  hive:
+  hive_flutter:
   pluto_grid:
     path: ../
 

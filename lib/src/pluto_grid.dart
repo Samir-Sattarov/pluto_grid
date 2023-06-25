@@ -127,7 +127,7 @@ class PlutoGrid extends PlutoStatefulWidget {
   /// [columnGroups] can be expressed in UI by grouping columns.
   /// {@endtemplate}
   final List<PlutoColumnGroup>? columnGroups;
-  final Function(int,double)? onSizeChanged;
+  final Function(PlutoColumn,double)? onSizeChanged;
 
   // final Function(PlutoColumn ,double ) setColumnMinWidth;
 

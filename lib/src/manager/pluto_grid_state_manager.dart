@@ -156,7 +156,7 @@ class PlutoGridStateChangeNotifier extends PlutoChangeNotifier
   final PlutoChangeNotifierFilterResolver notifierFilterResolver;
 
   @override
-  final Function(int,double)? onSizeChanged;
+  final Function(PlutoColumn,double)? onSizeChanged;
 
   // final Function(PlutoColumn,double ) setColumnMinimumSize;
 
@@ -182,8 +182,8 @@ class PlutoGridStateChangeNotifier extends PlutoChangeNotifier
   }
 
   @override
-  void onChangeColumnSize(int index,double size) {
-    onSizeChanged?.call(index, size);
+  void onChangeColumnSize(PlutoColumn column,double size) {
+    onSizeChanged?.call(column, size);
   }
 }
 
@@ -393,8 +393,8 @@ class PlutoGridStateManager extends PlutoGridStateChangeNotifier {
   }
 
   @override
-  void onChangeColumnSize(int index,double size) {
-    onSizeChanged?.call(index,size);
+  void onChangeColumnSize(PlutoColumn column,double size) {
+    onSizeChanged?.call(column,size);
   }
 
 

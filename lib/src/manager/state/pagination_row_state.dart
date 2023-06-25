@@ -147,7 +147,7 @@ mixin PaginationRowState implements IPlutoGridState {
     PlutoColumn column, double size,) {
 
     column.width = size;
-    column.minWidth = size;
+    column.minWidth = 0;
 
 
     print("Column field ${column.field}, title ${column.title}, minW ${column.minWidth} w ${column.width}");

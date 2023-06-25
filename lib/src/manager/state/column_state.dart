@@ -109,7 +109,7 @@ abstract class IColumnState {
 
   void autoFitColumn(BuildContext context, PlutoColumn column);
 
-  void onChangeColumnSize(int index, double size);
+  void onChangeColumnSize(PlutoColumn index, double size);
 
   /// Hide or show the [column] with [hide] value.
   ///
@@ -554,7 +554,7 @@ mixin ColumnState implements IPlutoGridState {
       updated = _updateResizeColumns(column: column, offset: offset);
     }
 
-    onChangeColumnSize(columnIndex(column)!,column.width - column.minWidth);
+    onChangeColumnSize(column!,column.width - column.minWidth);
 
     if (updated == false) {
       return;
